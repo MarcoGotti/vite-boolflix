@@ -6,7 +6,8 @@ export const state = reactive({
   url_api: `https://api.themoviedb.org/3`,
   media_type: "multi",
   api_key: "61c198a32992a4189de16fcab7d00274",
-  searchResults: [],
+  searchRes: [],
+  starsNum: [],
   searchText: "",
   url_flag: "https://flagsapi.com/",
 
@@ -15,12 +16,23 @@ export const state = reactive({
     axios
       .get(url)
       .then((response) => {
-        this.searchResults = response.data.results;
-        console.log(this.searchResults);
+        const arr = response.data.results;
+
+        this.searchRes = arr.filter((result) => result.media_type != "person"); //
+        console.log(arr);
+        console.log(this.searchRes);
       })
       .catch((error) => {
         console.error(error);
       });
+  },
+
+  renderInfo(key_1, key_2, key_3, key_4) {
+    return key_1 && key_1 != key_3
+      ? key_1
+      : key_2 && key_2 != key_4
+      ? key_2
+      : "";
   },
 
   renderFlag(languageFlag) {
@@ -32,4 +44,8 @@ export const state = reactive({
       ? this.url_flag + "CN/flat/24.png"
       : this.url_flag + languageFlag.toUpperCase() + "/flat/24.png";
   },
+
+  /* renderFeed(num){
+    this.starsNum = Math.round(num)
+  } */
 });
