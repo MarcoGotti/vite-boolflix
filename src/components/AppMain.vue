@@ -46,17 +46,16 @@ export default {
                 />
               </div>
               <div>
-                <!-- <i style="color: yellow" class="fa-solid fa-star"></i> 
-                CDN di fontawesome rincitrullito!!!!-->
-
-                <!-- v-for="n in Math.round(vote)" -->
-
-                {{
-                  state.renderInfo(
-                    Math.round(result.vote_average),
-                    "🟢No Feedbacks"
-                  )
-                }}
+                <i
+                  v-if="result.vote_average"
+                  v-for="n in Math.round(result.vote_average)"
+                  style="color: yellow"
+                  class="fa-solid fa-star"
+                ></i>
+                <span v-else>🟡No Feedbacks</span>
+                <!-- {{ 
+                    state.renderInfo(Math.round(result.vote_average),"❌No Feeds")
+                }} -->
               </div>
             </div>
           </div>

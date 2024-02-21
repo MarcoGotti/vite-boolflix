@@ -3,13 +3,12 @@ import axios from "axios";
 
 export const state = reactive({
   //state
-  url_api: `https://api.themoviedb.org/3`,
-  media_type: "multi",
   api_key: "61c198a32992a4189de16fcab7d00274",
-  searchRes: [],
-  starsNum: [],
-  searchText: "",
+  url_api: `https://api.themoviedb.org/3`,
   url_flag: "https://flagsapi.com/",
+  media_type: "multi",
+  searchRes: [],
+  searchText: "",
 
   //Actions
   renderResults(url) {
@@ -44,8 +43,4 @@ export const state = reactive({
       ? this.url_flag + "CN/flat/24.png"
       : this.url_flag + languageFlag.toUpperCase() + "/flat/24.png";
   },
-
-  /* renderFeed(num){
-    this.starsNum = Math.round(num)
-  } */
 });
