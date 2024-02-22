@@ -6,6 +6,7 @@ export const state = reactive({
   api_key: "61c198a32992a4189de16fcab7d00274",
   url_api: `https://api.themoviedb.org/3`,
   url_flag: "https://flagsapi.com/",
+  url_flyer: "https://image.tmdb.org/t/p/w342",
   media_type: "multi",
   searchRes: [],
   searchText: "",
