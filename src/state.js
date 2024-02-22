@@ -16,8 +16,8 @@ export const state = reactive({
       .get(url)
       .then((response) => {
         const arr = response.data.results;
-
         this.searchRes = arr.filter((result) => result.media_type != "person"); //
+
         console.log(arr);
         console.log(this.searchRes);
       })
@@ -42,5 +42,11 @@ export const state = reactive({
       : languageFlag == "zh"
       ? this.url_flag + "CN/flat/24.png"
       : this.url_flag + languageFlag.toUpperCase() + "/flat/24.png";
+  },
+
+  searchGo() {
+    const url = `${state.url_api}/search/${state.media_type}?api_key=${state.api_key}&query=${state.searchText}`;
+    console.log(url);
+    state.renderResults(url);
   },
 });
