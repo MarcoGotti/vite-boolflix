@@ -3,7 +3,7 @@
   --bool-secondary: #121212;
   --bool-black: black;
   --bool-light: #b3b3b3;
-  --bool-dark: #242424;
+  --bool-dark: #4f4f4f; /* #242424 */
   --bool-white: #ffffff;
   --bool-focus: red;
 }

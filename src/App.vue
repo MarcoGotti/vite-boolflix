@@ -16,8 +16,6 @@ export default {
         "https://api.themoviedb.org/3/trending/all/day?api_key=61c198a32992a4189de16fcab7d00274",
     };
   },
-  methods: {},
-  computed: {},
   created() {
     state.renderResults(this.url_api_initial);
   },

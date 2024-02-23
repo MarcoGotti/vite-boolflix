@@ -37,12 +37,14 @@ export const state = reactive({
 
   renderFlag(languageFlag) {
     return languageFlag == "en"
-      ? this.url_flag + "GB/flat/24.png"
+      ? this.url_flag + "GB/flat/16.png"
       : languageFlag == "ja"
-      ? this.url_flag + "JP/flat/24.png"
+      ? this.url_flag + "JP/flat/16.png"
       : languageFlag == "zh"
-      ? this.url_flag + "CN/flat/24.png"
-      : this.url_flag + languageFlag.toUpperCase() + "/flat/24.png";
+      ? this.url_flag + "CN/flat/16.png"
+      : languageFlag == "ko"
+      ? this.url_flag + "KP/flat/16.png"
+      : this.url_flag + languageFlag.toUpperCase() + "/flat/16.png";
   },
 
   searchGo() {

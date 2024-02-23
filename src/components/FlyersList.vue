@@ -1,10 +1,14 @@
 <script>
 import { state } from "../state.js/";
-import FlyerItem from "./FlyerItem.vue";
+import FlyerPoster from "./FlyerPoster.vue";
+import FlyerInfo from "./FlyerInfo.vue";
+/* import FlyerItem from "./FlyerItem.vue"; */
 export default {
   name: "FlyersList",
   components: {
-    FlyerItem,
+    FlyerPoster,
+    FlyerInfo,
+    /* FlyerItem, */
   },
   data() {
     return {
@@ -22,7 +26,10 @@ export default {
           class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
           v-for="result in state.searchRes"
         >
-          <FlyerItem :result="result"></FlyerItem>
+          <div class="card">
+            <FlyerPoster :result="result"></FlyerPoster>
+            <FlyerInfo :result="result"></FlyerInfo>
+          </div>
         </div>
       </div>
     </div>
@@ -36,5 +43,25 @@ export default {
   padding: 2rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
+}
+
+.card {
+  border-radius: 5px;
+  background-color: var(--bool-secondary);
+  padding: 1rem;
+  border: 2px solid var(--bool-secondary);
+  border-radius: 5px;
+  transition: scale 0.5s, padding 0.5s, border 0.8s;
+}
+
+.card:hover {
+  border: 2px solid rgb(182, 0, 0);
+  border-radius: 5px;
+  padding: 0.1rem;
+  scale: 1.2;
+}
+
+.card:hover .cardInfos {
+  filter: opacity(1);
 }
 </style>

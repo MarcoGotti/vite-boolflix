@@ -16,7 +16,7 @@ export default {
     type="text"
     v-model="state.searchText"
     @keyup.enter="state.searchGo"
-    placeholder="what do you watch today?"
+    placeholder="what do you want to watch?"
   />
   <button type="button" @click="state.searchGo">Search</button>
 </template>
