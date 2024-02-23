@@ -2,12 +2,14 @@
 import { state } from "../state.js";
 import UserAccess from "./UserAccess.vue";
 import Searchinput from "./Searchinput.vue";
+import Logo from "./Logo.vue";
 
 export default {
   name: "AppHeader",
   components: {
     UserAccess,
     Searchinput,
+    Logo,
   },
   data() {
     return {
@@ -19,10 +21,7 @@ export default {
 </script>
 <template>
   <header>
-    <div class="logo">
-      <h1>boolfix</h1>
-    </div>
-
+    <Logo></Logo>
     <nav>
       <Searchinput></Searchinput>
       <UserAccess></UserAccess>
@@ -38,12 +37,5 @@ header {
   padding: 2rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
-
-  .logo {
-    h1 {
-      color: var(--bool-focus);
-      text-transform: uppercase;
-    }
-  }
 }
 </style>

@@ -40,8 +40,8 @@ export default {
         result.original_name !== result.name
       "
     >
-      <strong>Original Title:&nbsp</strong>
-      <span>
+      <p>
+        <strong>Original Title:&nbsp</strong>
         {{
           state.renderInfo(
             result.original_title,
@@ -50,21 +50,20 @@ export default {
             result.name
           )
         }}
-      </span>
+      </p>
     </div>
     <div class="overview">
-      <strong>Overview:&nbsp</strong>
-      <span>{{ result.overview }}</span>
+      <p><strong>Overview:&nbsp</strong>{{ result.overview }}</p>
     </div>
     <div class="feedback">
       <strong>Feedback:&nbsp</strong>
       <i
         v-if="result.vote_average"
         v-for="n in Math.round(result.vote_average)"
-        style="color: yellow"
         class="fa-solid fa-star"
       ></i>
       <span v-else>🟡None</span>
+
       <!-- {{ 
                     state.renderInfo(Math.round(result.vote_average),"❌No Feeds")
                 }} -->
@@ -82,11 +81,13 @@ export default {
   width: 100%;
   font-size: 12px;
   filter: opacity(0);
+  max-height: 100%;
   transition: filter 400ms ease-in-out;
 
   .release_year {
     display: inline;
     margin-right: 1rem;
+    font-size: 10px;
     color: var(--bool-light);
 
     div {
@@ -96,6 +97,7 @@ export default {
 
   .flag {
     display: inline;
+    font-size: 10px;
 
     div {
       display: inline;
@@ -123,9 +125,21 @@ export default {
     overflow: hidden;
   }
 
-  & span {
+  & strong {
+    color: var(--bool-white);
+  }
+
+  & p {
     font-weight: 100;
     color: var(--bool-light);
+  }
+
+  & span {
+    color: var(--bool-light);
+  }
+
+  & i {
+    color: rgb(207, 207, 0);
   }
 }
 </style>

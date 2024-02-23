@@ -51,14 +51,15 @@ export default {
   padding: 1rem;
   border: 2px solid var(--bool-secondary);
   border-radius: 5px;
+  height: 100%;
   transition: scale 0.5s, padding 0.5s, border 0.8s;
 }
 
 .card:hover {
   border: 2px solid rgb(182, 0, 0);
   border-radius: 5px;
-  padding: 0.1rem;
-  scale: 1.2;
+  overflow: auto;
+  scale: 1.3;
 }
 
 .card:hover .cardInfos {

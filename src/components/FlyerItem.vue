@@ -1,4 +1,4 @@
-<!-- temporary still living!!!!! -->
+<!-- Ho dovuto eliminare questo components altrimento avrei dovuto fare almeno un props-drilling per portare :result="result" più in là -->
 
 <script>
 import { state } from "../state.js/";

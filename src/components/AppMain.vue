@@ -1,10 +1,12 @@
 <script>
 import { state } from "../state.js";
 import FlyersList from "./FlyersList.vue";
+import CaseLimit from "./CaseLimit.vue";
 export default {
   name: "AppMain",
   components: {
     FlyersList,
+    CaseLimit,
   },
   data() {
     return {
@@ -16,7 +18,9 @@ export default {
 
 <template>
   <main>
-    <section class="show_off">
+    <CaseLimit v-if="state.searchRes.length == 0"></CaseLimit>
+
+    <section v-else class="show_off">
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -25,7 +29,7 @@ export default {
         </div>
       </div>
     </section>
-    <FlyersList></FlyersList>
+    <FlyersList v-else></FlyersList>
   </main>
 
   <!-- <div v-for="result in state.searchResults" class="card">
@@ -57,6 +61,9 @@ export default {
 </template>
 
 <style scoped>
+main {
+  min-height: calc(100vh - 245px);
+}
 .show_off {
   background-color: var(--bool-primary);
   padding: 2rem;
