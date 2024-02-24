@@ -2,12 +2,14 @@
 import { state } from "../state.js/";
 import FlyerPoster from "./FlyerPoster.vue";
 import FlyerInfo from "./FlyerInfo.vue";
+import ShowOffCard from "./ShowOffCard.vue";
 /* import FlyerItem from "./FlyerItem.vue"; */
 export default {
   name: "FlyersList",
   components: {
     FlyerPoster,
     FlyerInfo,
+    ShowOffCard,
     /* FlyerItem, */
   },
   data() {
@@ -19,6 +21,8 @@ export default {
 </script>
 
 <template>
+  <!-- <ShowOffCard></ShowOffCard> -->
+
   <section class="cards_list">
     <div class="container">
       <div class="row">
@@ -40,11 +44,17 @@ export default {
 .cards_list {
   /* section */
   background-color: var(--bool-primary);
-  padding: 2rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
-}
 
+  @media screen and (min-width: 468px) {
+    padding: 1rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 2rem;
+  }
+}
 .card {
   border-radius: 5px;
   background-color: var(--bool-secondary);
@@ -56,6 +66,7 @@ export default {
 }
 
 .card:hover {
+  cursor: pointer;
   border: 2px solid rgb(182, 0, 0);
   border-radius: 5px;
   overflow: auto;

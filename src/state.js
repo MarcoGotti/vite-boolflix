@@ -10,6 +10,7 @@ export const state = reactive({
   media_type: "multi",
   searchRes: [],
   searchText: "",
+  loader: true,
 
   //Actions
   renderResults(url) {
@@ -18,6 +19,7 @@ export const state = reactive({
       .then((response) => {
         const arr = response.data.results;
         this.searchRes = arr.filter((result) => result.media_type != "person"); //
+        this.loader = false;
 
         console.log(arr);
         console.log(this.searchRes);
@@ -51,5 +53,6 @@ export const state = reactive({
     const url = `${state.url_api}/search/${state.media_type}?api_key=${state.api_key}&query=${state.searchText}`;
     console.log(url);
     state.renderResults(url);
+    this.searchText = "";
   },
 });
