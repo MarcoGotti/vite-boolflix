@@ -1,5 +1,6 @@
 <script>
 import { state } from "../state.js/";
+import axios from "axios";
 import FlyerPoster from "./FlyerPoster.vue";
 import FlyerInfo from "./FlyerInfo.vue";
 import ShowOffCard from "./ShowOffCard.vue";
@@ -17,20 +18,25 @@ export default {
       state,
     };
   },
+  methods: {},
 };
 </script>
 
 <template>
-  <!-- <ShowOffCard></ShowOffCard> -->
+  <ShowOffCard></ShowOffCard>
 
   <section class="cards_list">
     <div class="container">
       <div class="row">
         <div
           class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
-          v-for="result in state.searchRes"
+          v-for="(result, index) in state.searchRes"
         >
-          <div class="card">
+          <div
+            class="card"
+            :id="result.id"
+            @click="state.pickMovie(index, result.id, result.media_type)"
+          >
             <FlyerPoster :result="result"></FlyerPoster>
             <FlyerInfo :result="result"></FlyerInfo>
           </div>
@@ -41,19 +47,10 @@ export default {
 </template>
 
 <style scoped>
-.cards_list {
-  /* section */
+section.cards_list {
   background-color: var(--bool-primary);
   margin: 0.5rem;
   border-radius: 0.5rem;
-
-  @media screen and (min-width: 468px) {
-    padding: 1rem;
-  }
-
-  @media screen and (min-width: 768px) {
-    padding: 2rem;
-  }
 }
 .card {
   border-radius: 5px;

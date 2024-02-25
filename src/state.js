@@ -11,6 +11,8 @@ export const state = reactive({
   searchRes: [],
   searchText: "",
   loader: true,
+  cast: [],
+  result: [],
 
   //Actions
   renderResults(url) {
@@ -23,6 +25,29 @@ export const state = reactive({
 
         console.log(arr);
         console.log(this.searchRes);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+
+  pickMovie(resultIndex, id, media) {
+    this.result = this.searchRes[resultIndex];
+    console.log(this.result);
+    this.getActors(id, media);
+  },
+
+  getActors(id, media) {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/${media}/${id}/credits?api_key=${this.api_key}`
+      )
+      .then((response) => {
+        const arr = response.data.cast;
+        this.cast = arr.filter((actor, index) => index < 5);
+
+        console.log(arr);
+        console.log(this.cast);
       })
       .catch((error) => {
         console.error(error);
@@ -50,9 +75,9 @@ export const state = reactive({
   },
 
   searchGo() {
-    const url = `${state.url_api}/search/${state.media_type}?api_key=${state.api_key}&query=${state.searchText}`;
+    const url = `${this.url_api}/search/${this.media_type}?api_key=${this.api_key}&query=${this.searchText}`;
     console.log(url);
-    state.renderResults(url);
+    this.renderResults(url);
     this.searchText = "";
   },
 });

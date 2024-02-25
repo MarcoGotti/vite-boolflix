@@ -114,7 +114,7 @@ export default {
 
   h5 {
     font-size: 1rem;
-    color: var(--bool-focus);
+    color: var(--bool-light);
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 0.5rem;
