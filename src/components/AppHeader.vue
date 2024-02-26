@@ -32,10 +32,31 @@ export default {
 <style scoped>
 header {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--bool-primary);
-  padding: 2rem;
+  padding: 0.5rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
+
+  @media screen and (min-width: 580px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    gap: 2rem;
+
+    @media screen and (min-width: 580px) {
+      justify-content: end;
+    }
+  }
 }
 </style>

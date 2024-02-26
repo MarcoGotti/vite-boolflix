@@ -19,7 +19,7 @@ export default {
     };
   },
   created() {
-    state.renderResults(this.url_api_initial);
+    state.getResults(this.url_api_initial);
   },
 };
 </script>

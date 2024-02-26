@@ -53,7 +53,8 @@ export default {
       </p>
     </div>
     <div class="overview">
-      <p><strong>Overview:&nbsp</strong>{{ result.overview }}</p>
+      <strong>Overview:&nbsp</strong>
+      <span>{{ result.overview }}</span>
     </div>
     <div class="feedback">
       <strong>Feedback:&nbsp</strong>
@@ -84,40 +85,35 @@ export default {
   max-height: 100%;
   transition: filter 400ms ease-in-out;
 
+  h5 {
+    font-size: 0.75rem;
+    color: var(--bool-light);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
   .release_year {
-    display: inline;
+    display: inline-block;
     margin-right: 1rem;
     font-size: 10px;
     color: var(--bool-light);
-
-    div {
-      display: inline;
-    }
   }
 
   .flag {
-    display: inline;
+    display: inline-block;
     font-size: 10px;
 
     div {
-      display: inline;
+      display: inline-block;
       color: var(--bool-light);
       margin-right: 0.25rem;
     }
 
     img {
-      display: inline;
-      vertical-align: bottom;
-      color: var(--bool-focus);
+      vertical-align: middle;
+      color: var(--bool-dark);
     }
-  }
-
-  h5 {
-    font-size: 1rem;
-    color: var(--bool-light);
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 0.5rem;
   }
 
   .overview {
@@ -126,12 +122,7 @@ export default {
   }
 
   & strong {
-    color: var(--bool-white);
-  }
-
-  & p {
-    font-weight: 100;
-    color: var(--bool-light);
+    color: var(--bool-dark);
   }
 
   & span {

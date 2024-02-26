@@ -15,39 +15,38 @@ export const state = reactive({
   result: [],
 
   //Actions
-  renderResults(url) {
+  getResults(url) {
     axios
       .get(url)
       .then((response) => {
         const arr = response.data.results;
-        this.searchRes = arr.filter((result) => result.media_type != "person"); //
+        this.searchRes = arr.filter((result) => result.media_type != "person");
         this.loader = false;
-
-        console.log(arr);
-        console.log(this.searchRes);
+        this.getShowOff(0, this.searchRes[0].id, this.searchRes[0].media_type);
+        //console.log(arr);
+        //console.log(this.searchRes);
       })
       .catch((error) => {
         console.error(error);
       });
   },
 
-  pickMovie(resultIndex, id, media) {
+  getShowOff(resultIndex, id, mediaType) {
     this.result = this.searchRes[resultIndex];
-    console.log(this.result);
-    this.getActors(id, media);
+    //console.log(this.result);
+    this.getActors(id, mediaType);
   },
 
-  getActors(id, media) {
+  getActors(id, mediaType) {
     axios
       .get(
-        `https://api.themoviedb.org/3/${media}/${id}/credits?api_key=${this.api_key}`
+        `https://api.themoviedb.org/3/${mediaType}/${id}/credits?api_key=${this.api_key}`
       )
       .then((response) => {
         const arr = response.data.cast;
         this.cast = arr.filter((actor, index) => index < 5);
-
-        console.log(arr);
-        console.log(this.cast);
+        //console.log(arr);
+        //console.log(this.cast);
       })
       .catch((error) => {
         console.error(error);
@@ -76,8 +75,8 @@ export const state = reactive({
 
   searchGo() {
     const url = `${this.url_api}/search/${this.media_type}?api_key=${this.api_key}&query=${this.searchText}`;
-    console.log(url);
-    this.renderResults(url);
+    //console.log(url);
+    this.getResults(url);
     this.searchText = "";
   },
 });

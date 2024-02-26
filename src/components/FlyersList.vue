@@ -35,7 +35,7 @@ export default {
           <div
             class="card"
             :id="result.id"
-            @click="state.pickMovie(index, result.id, result.media_type)"
+            @click="state.getShowOff(index, result.id, result.media_type)"
           >
             <FlyerPoster :result="result"></FlyerPoster>
             <FlyerInfo :result="result"></FlyerInfo>

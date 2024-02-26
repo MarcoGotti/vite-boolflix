@@ -12,13 +12,15 @@ export default {
 </script>
 
 <template>
-  <input
-    type="text"
-    v-model="state.searchText"
-    @keyup.enter="state.searchGo"
-    placeholder="what do you want to watch?"
-  />
-  <button type="button" @click="state.searchGo">Search</button>
+  <div>
+    <input
+      type="text"
+      v-model="state.searchText"
+      @keyup.enter="state.searchGo"
+      placeholder="what do you want to watch?"
+    />
+    <button type="button" @click="state.searchGo">Search</button>
+  </div>
 </template>
 
 <style scoped>
@@ -31,14 +33,23 @@ button {
 input {
   border-radius: 10px;
   background-color: var(--bool-light);
-  width: 300px;
+  width: 250px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
 }
 
 button {
+  display: none;
   margin-left: 0.3rem;
   border-radius: 3px;
   background-color: var(--bool-dark);
   color: var(--bool-light);
+
+  @media screen and (min-width: 794px) {
+    display: inline-block;
+  }
 }
 </style>
