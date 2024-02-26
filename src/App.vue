@@ -20,6 +20,7 @@ export default {
   },
   created() {
     state.getResults(this.url_api_initial);
+    console.log("show " + state.showOff);
   },
 };
 </script>

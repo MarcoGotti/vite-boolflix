@@ -83,14 +83,7 @@ export default {
     }
   }
 
-  .cast {
-    strong {
-      color: var(--bool-dark);
-    }
-    span {
-      color: var(--bool-light);
-    }
-  }
+  .cast,
   .overview {
     strong {
       color: var(--bool-dark);

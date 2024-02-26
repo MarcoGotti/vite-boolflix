@@ -13,6 +13,7 @@ export const state = reactive({
   loader: true,
   cast: [],
   result: [],
+  showOff: false,
 
   //Actions
   getResults(url) {
@@ -33,8 +34,9 @@ export const state = reactive({
 
   getShowOff(resultIndex, id, mediaType) {
     this.result = this.searchRes[resultIndex];
-    //console.log(this.result);
     this.getActors(id, mediaType);
+    this.showOff = true;
+    console.log(this.showOff);
   },
 
   getActors(id, mediaType) {

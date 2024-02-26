@@ -3,12 +3,14 @@ import { state } from "../state.js/";
 import FlyerInfo from "./FlyerInfo.vue";
 import ShowOffPoster from "./ShowOffPoster.vue";
 import ShowOffInfo from "./ShowOffInfo.vue";
+import Xclose from "./Xclose.vue";
 export default {
   name: "ShowOffCard",
   components: {
     FlyerInfo,
     ShowOffPoster,
     ShowOffInfo,
+    Xclose,
   },
   data() {
     return {
@@ -19,11 +21,12 @@ export default {
 </script>
 
 <template>
-  <section class="show_off">
+  <section v-if="state.showOff" class="show_off">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="big_card">
+            <Xclose></Xclose>
             <ShowOffPoster></ShowOffPoster>
             <ShowOffInfo></ShowOffInfo>
           </div>
@@ -44,12 +47,13 @@ section.show_off {
   @media screen and (min-width: 668px) {
     display: block;
   }
-}
 
-.big_card {
-  border-radius: 5px;
-  background-color: var(--bool-secondary);
-  padding: 1rem;
-  min-height: calc(224.567px + 2rem);
+  .big_card {
+    position: relative;
+    border-radius: 5px;
+    background-color: var(--bool-secondary);
+    padding: 1rem;
+    min-height: calc(224.567px + 2rem);
+  }
 }
 </style>
