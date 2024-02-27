@@ -20,10 +20,12 @@ export default {
 
 <template>
   <main>
-    <Loader v-if="state.loader1 && state.loader2"></Loader>
-    <CaseLimit
+    <!-- <Loader v-if="state.loader1 && state.loader2"></Loader> -->
+    <Loader v-if="state.loader"></Loader>
+    <!-- <CaseLimit
       v-if="!state.loader1 && !state.loader2 && state.searchRes.length == 0"
-    ></CaseLimit>
+    ></CaseLimit> -->
+    <CaseLimit v-if="!state.loader && state.searchRes.length == 0"></CaseLimit>
     <FlyersList v-else></FlyersList>
   </main>
 </template>
