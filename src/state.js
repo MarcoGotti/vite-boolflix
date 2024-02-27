@@ -10,13 +10,58 @@ export const state = reactive({
   media_type: "multi",
   searchRes: [],
   searchText: "",
-  loader: true,
+  loader1: true,
+  loader2: true,
   cast: [],
   result: [],
   showOff: false,
+  /* ***** */
+  movies: [],
+  tv: [],
 
   //Actions
-  getResults(url) {
+  getResults(url_movie, url_tv) {
+    axios
+      .get(url_movie)
+      .then((response) => {
+        this.movies = response.data.results;
+        console.log(this.movies);
+        this.loader1 = false;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    axios
+      .get(url_tv)
+      .then((response) => {
+        this.tv = response.data.results;
+        console.log(this.tv);
+        this.loader2 = false;
+        this.merge(this.movies, this.tv);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+
+  merge(arr1, arr2) {
+    this.searchRes = [];
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== undefined) this.searchRes.push(arr1[i]);
+      if (arr2[i] !== undefined) this.searchRes.push(arr2[i]);
+    }
+    this.getShowOff(0, this.searchRes[0].id, this.searchRes[0].media_type);
+    console.log(this.searchRes);
+  },
+  searchGo() {
+    const url_movie = `${this.url_api}/search/movie?api_key=${this.api_key}&query=${this.searchText}`;
+    const url_tv = `${this.url_api}/search/tv?api_key=${this.api_key}&query=${this.searchText}`;
+    //console.log(url);
+    this.getResults(url_movie, url_tv);
+    this.searchText = "";
+  },
+  /* getResults(url) {
     axios
       .get(url)
       .then((response) => {
@@ -30,7 +75,7 @@ export const state = reactive({
       .catch((error) => {
         console.error(error);
       });
-  },
+  }, */
 
   getShowOff(resultIndex, id, mediaType) {
     this.result = this.searchRes[resultIndex];
@@ -75,10 +120,10 @@ export const state = reactive({
       : this.url_flag + languageFlag.toUpperCase() + "/flat/16.png";
   },
 
-  searchGo() {
+  /* searchGo() {
     const url = `${this.url_api}/search/${this.media_type}?api_key=${this.api_key}&query=${this.searchText}`;
     //console.log(url);
     this.getResults(url);
     this.searchText = "";
-  },
+  }, */
 });
