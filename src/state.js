@@ -10,10 +10,10 @@ export const state = reactive({
   media_type: "multi",
   searchRes: [],
   searchText: "",
-  loader: true,
   cast: [],
-  result: [],
   showOff: false,
+  loader: true,
+  result: [],
   /* *** TENTATIVO CON DUE CALL: MOVIE && TV *** */
   /* movies: [],
   tv: [],
@@ -53,8 +53,8 @@ export const state = reactive({
       if (arr1[i] !== undefined) this.searchRes.push(arr1[i]);
       if (arr2[i] !== undefined) this.searchRes.push(arr2[i]);
     }
-    this.getShowOff(0, this.searchRes[0].id, this.searchRes[0].media_type);
-    console.log(this.searchRes);
+    //this.getShowOff(0, this.searchRes[0].id, this.searchRes[0].media_type);
+    //console.log(this.searchRes);
   },
   searchGo() {
     const url_movie = `${this.url_api}/search/movie?api_key=${this.api_key}&query=${this.searchText}`;
@@ -63,6 +63,8 @@ export const state = reactive({
     this.searchText = "";
   }, */
 
+  /* *********************************************************** */
+  /* *** 1 CALL: /MULTI *** */
   getResults(url) {
     axios
       .get(url)
@@ -80,6 +82,14 @@ export const state = reactive({
       });
   },
 
+  searchGo() {
+    const url = `${this.url_api}/search/${this.media_type}?api_key=${this.api_key}&query=${this.searchText}`;
+    this.getResults(url);
+    this.searchText = "";
+
+    console.log(url);
+  },
+  /* **************************************************************** */
   getShowOff(resultIndex, id, mediaType) {
     this.result = this.searchRes[resultIndex];
     this.getActors(id, mediaType);
@@ -101,14 +111,6 @@ export const state = reactive({
       .catch((error) => {
         console.error(error);
       });
-  },
-
-  searchGo() {
-    const url = `${this.url_api}/search/${this.media_type}?api_key=${this.api_key}&query=${this.searchText}`;
-    this.getResults(url);
-    this.searchText = "";
-
-    console.log(url);
   },
 
   renderInfo(key_1, key_2, key_3, key_4) {

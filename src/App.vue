@@ -14,8 +14,10 @@ export default {
   data() {
     return {
       state,
+      /* *** 1 CALL: /MULTI *** */
       url_api_initial:
         "https://api.themoviedb.org/3/trending/all/day?api_key=61c198a32992a4189de16fcab7d00274",
+      /* **************************************************************************************** */
 
       /* *** TENTATIVO CON DUE CALL: MOVIE && TV *** */
       /* url_api_movies_initial:
@@ -26,7 +28,10 @@ export default {
   },
 
   created() {
+    /* *** 1 CALL: /MULTI *** */
     state.getResults(this.url_api_initial);
+    /* *********************************************************************** */
+
     /* *** TENTATIVO CON DUE CALL: MOVIE && TV *** */
     /* state.getResults(this.url_api_movies_initial, this.url_api_tv_initial); */
   },
