@@ -15,20 +15,21 @@ export const state = reactive({
   loader: true,
   result: [],
   /* *** TENTATIVO CON DUE CALL: MOVIE && TV *** */
-  /* movies: [],
+  movies: [],
   tv: [],
   loader1: true,
-  loader2: true, */
+  loader2: true,
 
   //Actions
   /* *** TENTATIVO CON DUE CALL: MOVIE && TV *** */
-  /* getResults(url_movie, url_tv) {
+  getResults(url_movie, url_tv) {
     axios
       .get(url_movie)
       .then((response) => {
         this.movies = response.data.results;
         console.log(this.movies);
         this.loader1 = false;
+
         this.merge(this.movies, this.tv); //??funzione che dovrebbe attendere le due response??
       })
       .catch((error) => {
@@ -41,6 +42,8 @@ export const state = reactive({
         this.tv = response.data.results;
         console.log(this.tv);
         this.loader2 = false;
+
+        this.merge(this.tv, this.movies); //??funzione che dovrebbe attendere le due response??
       })
       .catch((error) => {
         console.error(error);
@@ -53,19 +56,19 @@ export const state = reactive({
       if (arr1[i] !== undefined) this.searchRes.push(arr1[i]);
       if (arr2[i] !== undefined) this.searchRes.push(arr2[i]);
     }
-    //this.getShowOff(0, this.searchRes[0].id, this.searchRes[0].media_type);
-    //console.log(this.searchRes);
+    this.getShowOff(0, this.searchRes[0].id, this.searchRes[0].media_type);
+    console.log(this.searchRes);
   },
   searchGo() {
     const url_movie = `${this.url_api}/search/movie?api_key=${this.api_key}&query=${this.searchText}`;
     const url_tv = `${this.url_api}/search/tv?api_key=${this.api_key}&query=${this.searchText}`;
     this.getResults(url_movie, url_tv);
     this.searchText = "";
-  }, */
+  },
 
   /* *********************************************************** */
   /* *** 1 CALL: /MULTI *** */
-  getResults(url) {
+  /*   getResults(url) {
     axios
       .get(url)
       .then((response) => {
@@ -88,7 +91,7 @@ export const state = reactive({
     this.searchText = "";
 
     console.log(url);
-  },
+  }, */
   /* **************************************************************** */
   getShowOff(resultIndex, id, mediaType) {
     this.result = this.searchRes[resultIndex];
