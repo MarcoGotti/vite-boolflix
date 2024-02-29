@@ -15,6 +15,7 @@ export default {
   <div>
     <input
       type="text"
+      id="text"
       v-model="state.searchText"
       @keyup.enter="state.searchGo"
       placeholder="what do you want to watch?"

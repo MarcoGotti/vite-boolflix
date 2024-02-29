@@ -7,10 +7,13 @@ export const state = reactive({
   url_api: `https://api.themoviedb.org/3`,
   url_flag: "https://flagsapi.com/",
   url_flyer: "https://image.tmdb.org/t/p/w342",
-  media_type: "multi",
+  media_type: "",
   searchRes: [],
   searchText: "",
   cast: [],
+  genres: [],
+  genresId: [],
+  selectedgenre: "",
   showOff: false,
   loader: true,
   result: [],
@@ -21,12 +24,53 @@ export const state = reactive({
   loader2: true,
 
   //Actions
+  getGenres() {
+    axios
+      .get(
+        "https://api.themoviedb.org/3/genre/movie/list?api_key=61c198a32992a4189de16fcab7d00274"
+      )
+      .then((response) => {
+        const arr = response.data.genres;
+        arr.forEach((genre) => {
+          if (!this.genresId.includes(genre.id)) {
+            this.genresId.push(genre.id);
+            this.genres.push(genre);
+          }
+        });
+        console.log(arr);
+        console.log(this.genres);
+        console.log(this.genresId);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    axios
+      .get(
+        "https://api.themoviedb.org/3/genre/tv/list?api_key=61c198a32992a4189de16fcab7d00274"
+      )
+      .then((response) => {
+        const arr = response.data.genres;
+        arr.forEach((genre) => {
+          if (!this.genresId.includes(genre.id)) {
+            this.genresId.push(genre.id);
+            this.genres.push(genre);
+          }
+        });
+        console.log(arr);
+        console.log(this.genres);
+        console.log(this.genresId);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
   /* *** TENTATIVO CON DUE CALL: MOVIE && TV *** */
   getResults(url_movie, url_tv) {
     axios
       .get(url_movie)
       .then((response) => {
         this.movies = response.data.results;
+        this.movies.forEach((item) => (item.media_type = "movie"));
         console.log(this.movies);
         this.loader1 = false;
 
@@ -40,6 +84,7 @@ export const state = reactive({
       .get(url_tv)
       .then((response) => {
         this.tv = response.data.results;
+        this.tv.forEach((item) => (item.media_type = "tv"));
         console.log(this.tv);
         this.loader2 = false;
 

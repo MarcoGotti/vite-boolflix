@@ -23,6 +23,18 @@ export default {
   <header>
     <Logo></Logo>
     <nav>
+      <select name="genre" id="genre" v-model="state.selectedgenre">
+        <option value="" selected>All</option>
+        <option v-for="genre in state.genres" :value="genre.id">
+          {{ genre.name }}
+        </option>
+      </select>
+
+      <select name="media" id="media" v-model="state.media_type">
+        <option value="" selected>All</option>
+        <option value="movie">Movies</option>
+        <option value="tv">Series</option>
+      </select>
       <Searchinput></Searchinput>
       <UserAccess></UserAccess>
     </nav>
