@@ -4,14 +4,14 @@ import axios from "axios";
 import FlyerPoster from "./FlyerPoster.vue";
 import FlyerInfo from "./FlyerInfo.vue";
 import ShowOffCard from "./ShowOffCard.vue";
-/* import FlyerItem from "./FlyerItem.vue"; */
+//import FlyerItem from "./FlyerItem.vue";
 export default {
   name: "FlyersList",
   components: {
     FlyerPoster,
     FlyerInfo,
     ShowOffCard,
-    /* FlyerItem, */
+    //FlyerItem,  non posso creare component FlyerItem senza fare drilling in FlyerPoster e FlyerInfo
   },
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
       <div class="row">
         <div
           class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
-          v-for="(result, index) in state.searchRes"
+          v-for="(result, index) in state.filteredRes"
         >
           <div
             class="card"

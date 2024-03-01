@@ -64,10 +64,6 @@ export default {
         class="fa-solid fa-star"
       ></i>
       <span v-else>🟡None</span>
-
-      <!-- {{ 
-                    state.renderInfo(Math.round(result.vote_average),"❌No Feeds")
-                }} -->
     </div>
   </div>
 </template>

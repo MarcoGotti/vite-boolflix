@@ -17,7 +17,7 @@ export default {
   flex-direction: column-reverse;
   gap: 0.5rem;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     flex-direction: row;
     align-items: center;
   }

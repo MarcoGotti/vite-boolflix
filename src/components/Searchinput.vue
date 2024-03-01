@@ -37,7 +37,7 @@ input {
   width: 250px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1056px) {
     width: 300px;
   }
 }
@@ -49,7 +49,7 @@ button {
   background-color: var(--bool-dark);
   color: var(--bool-light);
 
-  @media screen and (min-width: 794px) {
+  @media screen and (min-width: 1056px) {
     display: inline-block;
   }
 }
