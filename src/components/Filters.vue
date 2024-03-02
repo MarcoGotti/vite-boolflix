@@ -1,7 +1,10 @@
 <script>
 import { state } from "../state.js";
+import genreOptions from "./genreOptions.vue";
+import mediaOptions from "./mediaOptions.vue";
 export default {
   name: "Filters",
+  components: { genreOptions, mediaOptions },
   data() {
     return {
       state,
@@ -17,10 +20,7 @@ export default {
     v-model="state.genre"
     @change="state.applyFilters()"
   >
-    <option value="" selected>All</option>
-    <option v-for="genre in state.genres" :value="genre.id">
-      {{ genre.name }}
-    </option>
+    <genreOptions></genreOptions>
   </select>
 
   <select
@@ -29,10 +29,18 @@ export default {
     v-model="state.media_type"
     @change="state.applyFilters()"
   >
-    <option value="" selected>All</option>
-    <option value="movie">Movies</option>
-    <option value="tv">Series</option>
+    <mediaOptions></mediaOptions>
   </select>
 </template>
 
-<style scoped></style>
+<style scoped>
+select {
+  padding: 0.5rem;
+  border: none;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: var(--bool-light);
+  max-width: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+</style>

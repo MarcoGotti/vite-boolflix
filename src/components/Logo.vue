@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div class="logo">
-    <h1>boolfix</h1>
+    <h1>boolflix</h1>
   </div>
 </template>
 

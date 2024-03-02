@@ -21,10 +21,7 @@ export default {
     };
   },
   mounted() {
-    state.getResults(this.url_api_movies_initial, this.url_api_tv_initial);
-  },
-  created() {
-    state.getGenres();
+    state.fetchData(this.url_api_movies_initial, this.url_api_tv_initial);
   },
 };
 </script>

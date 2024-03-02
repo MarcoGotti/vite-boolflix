@@ -49,7 +49,7 @@ button {
   background-color: var(--bool-dark);
   color: var(--bool-light);
 
-  @media screen and (min-width: 1056px) {
+  @media screen and (min-width: 1080px) {
     display: inline-block;
   }
 }

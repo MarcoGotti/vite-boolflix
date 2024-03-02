@@ -60,7 +60,7 @@ export default {
       <strong>Feedback:&nbsp</strong>
       <i
         v-if="result.vote_average"
-        v-for="n in Math.round(result.vote_average)"
+        v-for="n in Math.round(result.vote_average / 2)"
         class="fa-solid fa-star"
       ></i>
       <span v-else>🟡None</span>

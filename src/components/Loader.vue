@@ -14,8 +14,8 @@ export default {
   border: 8px solid var(--bool-dark);
   border-radius: 50%;
   border-top: 8px solid var(--bool-focus);
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   animation: spin 2s linear infinite;
 }
 
