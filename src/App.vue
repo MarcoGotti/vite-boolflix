@@ -20,7 +20,7 @@ export default {
         "https://api.themoviedb.org/3/trending/tv/day?api_key=61c198a32992a4189de16fcab7d00274",
     };
   },
-  mounted() {
+  created() {
     state.fetchData(this.url_api_movies_initial, this.url_api_tv_initial);
   },
 };

@@ -24,8 +24,10 @@ export default {
   <header>
     <Logo></Logo>
     <nav>
-      <Filters></Filters>
-      <Searchinput></Searchinput>
+      <div class="search">
+        <Searchinput></Searchinput>
+        <Filters></Filters>
+      </div>
       <UserAccess></UserAccess>
     </nav>
   </header>
@@ -35,29 +37,35 @@ export default {
 header {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  justify-content: space-between;
   align-items: center;
-  background-color: var(--bool-primary);
-  padding: 0.5rem;
   margin: 0.5rem;
+  padding: 1rem;
+  background-color: var(--bool-primary);
   border-radius: 0.5rem;
 
-  @media screen and (min-width: 580px) {
+  @media screen and (min-width: 594px) {
     flex-direction: row;
-    justify-content: space-between;
-    padding: 2rem;
   }
 
   nav {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    justify-content: space-around;
-    gap: 2rem;
+    margin-top: 0.5rem;
 
-    @media screen and (min-width: 580px) {
+    @media screen and (min-width: 594px) {
       justify-content: end;
+      gap: 2rem;
+      margin-top: 0;
+    }
+
+    .search {
+      @media screen and (min-width: 824px) {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 0.5rem;
+      }
     }
   }
 }

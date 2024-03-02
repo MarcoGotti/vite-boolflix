@@ -38,7 +38,11 @@ export const state = reactive({
       this.merge(this.tv, this.movies); //function ripetuta due volte. Non pulito ma efficace
     });
   },
-
+  /**
+   * Merge and mix (one object - one object) two arrays
+   * @param {Array} arr1 One of arrays result of calls
+   * @param {Array} arr2 The other array
+   */
   merge(arr1, arr2) {
     this.searchRes = [];
     for (let i = 0; i < arr2.length; i++) {
@@ -46,7 +50,6 @@ export const state = reactive({
       if (arr2[i] !== undefined) this.searchRes.push(arr2[i]);
     }
     this.applyFilters();
-    this.showOff = false;
     //this.getShowOff(0, this.filteredRes[0].id, this.filteredRes[0].media_type);
     console.log(this.searchRes);
   },
@@ -66,11 +69,15 @@ export const state = reactive({
     this.filteredRes = this.filterByMedia(this.searchRes, this.media_type);
     this.filteredRes = this.filterByGenre(this.filteredRes, this.genre);
     this.showOff = false;
-    //this.getShowOff(0, this.filteredRes[0].id, this.filteredRes[0].media_type);
 
     console.log(this.filteredRes);
   },
-
+  /**
+   * Isolates the clicked object and allows showoff section to appear
+   * @param {Number} resultIndex Object position
+   * @param {Number} id Object key
+   * @param {String} mediaType Object key
+   */
   getShowOff(resultIndex, id, mediaType) {
     this.result = this.filteredRes[resultIndex];
     this.getActors(id, mediaType);
@@ -91,14 +98,21 @@ export const state = reactive({
       });
   },
 
-  searchGo() {
+  searchInitiate() {
     const url_movie = `${this.url_api}/search/movie?api_key=${this.api_key}&query=${this.searchText}`;
     const url_tv = `${this.url_api}/search/tv?api_key=${this.api_key}&query=${this.searchText}`;
     this.fetchData(url_movie, url_tv);
     this.searchText = "";
     //
   },
-
+  /**
+   * Regulates the rendering in case of equality
+   * @param {String} key_1 object key .original_title
+   * @param {String} key_2 object key .original_name
+   * @param {String} key_3 object key .title
+   * @param {String} key_4 object key .name
+   * @returns
+   */
   renderInfo(key_1, key_2, key_3, key_4) {
     return key_1 && key_1 != key_3
       ? key_1
@@ -106,7 +120,11 @@ export const state = reactive({
       ? key_2
       : "";
   },
-
+  /**
+   * Compensate necessary inequality between Country-Language abbreviation
+   * @param {String} languageFlag object key
+   * @returns a piece of URL (a String)
+   */
   renderFlag(languageFlag) {
     return languageFlag == "en"
       ? this.url_flag + "GB/flat/16.png"

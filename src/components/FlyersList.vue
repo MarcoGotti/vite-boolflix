@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <ShowOffCard></ShowOffCard>
+  <ShowOffCard v-if="state.showOff"></ShowOffCard>
 
   <section class="cards_list">
     <div class="container">

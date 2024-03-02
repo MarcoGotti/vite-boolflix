@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-  <section v-if="state.showOff" class="show_off">
+  <section class="show_off">
     <div class="container">
       <div class="row">
         <div class="col-12">

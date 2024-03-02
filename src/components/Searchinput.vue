@@ -17,10 +17,10 @@ export default {
       type="text"
       id="text"
       v-model="state.searchText"
-      @keyup.enter="state.searchGo"
+      @keyup.enter="state.searchInitiate"
       placeholder="what do you want to watch?"
     />
-    <button type="button" @click="state.searchGo">Search</button>
+    <button type="button" @click="state.searchInitiate">Search</button>
   </div>
 </template>
 
@@ -32,12 +32,12 @@ button {
   font-weight: 500;
 }
 input {
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: var(--bool-light);
   width: 250px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-  @media screen and (min-width: 1056px) {
+  @media screen and (min-width: 1176px) {
     width: 300px;
   }
 }
@@ -49,7 +49,7 @@ button {
   background-color: var(--bool-dark);
   color: var(--bool-light);
 
-  @media screen and (min-width: 1080px) {
+  @media screen and (min-width: 1176px) {
     display: inline-block;
   }
 }
